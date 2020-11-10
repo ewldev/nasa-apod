@@ -10,3 +10,5 @@ We also have the ability to add images to our favorites page, accomplished using
 
 At our favorites page, we can view the images that we saved and have the option to remove a favorite and the page reloads from the top of the page.
 
+Using Loaf library to create an animated SVG icon.
+https://getloaf.io/
