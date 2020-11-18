@@ -69,12 +69,13 @@ function createDOMNodes(page) {
     });
 }
 
-function updateDom(page) {
+function updateDOM(page) {
     // Get Favorites from localStorage
     if (localStorage.getItem('nasaFavorites')) {
         favorites = JSON.parse(localStorage.getItem('nasaFavorites'))
         console.log(favorites);
     }
+    imagesContainer.textContent = '';
     createDOMNodes(page);
 }
 
