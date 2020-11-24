@@ -12,8 +12,10 @@ const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&count=${co
 let resultsArray = [];
 let favorites = {};
 
+// Scroll To Top, Remove Loader, Show Content
 function showContent(page) {
   window.scrollTo({ top: 0, behavior: 'instant'});
+  loader.classList.add('hidden');
   if (page === 'results') {
     resultsNav.classList.remove('hidden');
     favoritesNav.classList.add('hidden');
@@ -21,11 +23,12 @@ function showContent(page) {
     resultsNav.classList.add('hidden');
     favoritesNav.classList.remove('hidden');
   }
-  loader.classList.add('hidden');
 }
 
 function createDOMNodes(page) {
+  // Load ResultsArray or Favorites
     const currentArray = page === 'results' ? resultsArray : Object.values(favorites);
+    console.log('Current Array', page, currentArray);
     currentArray.forEach((result) => {
         // Card Container
     const card = document.createElement('div');
@@ -84,7 +87,9 @@ function updateDOM(page) {
     // Get Favorites from localStorage
     if (localStorage.getItem('nasaFavorites')) {
         favorites = JSON.parse(localStorage.getItem('nasaFavorites'))
+        console.log(favorites);
     }
+    // Reset DOM, Create DOM Nodes, Show Content
     imagesContainer.textContent = '';
     createDOMNodes(page);
     showContent(page);
