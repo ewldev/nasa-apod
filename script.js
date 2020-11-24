@@ -15,7 +15,7 @@ let favorites = {};
 // Scroll To Top, Remove Loader, Show Content
 function showContent(page) {
   window.scrollTo({ top: 0, behavior: 'instant'});
-  loader.classList.add('hidden');
+  // loader.classList.add('hidden');
   if (page === 'results') {
     resultsNav.classList.remove('hidden');
     favoritesNav.classList.add('hidden');
@@ -87,7 +87,7 @@ function updateDOM(page) {
     // Get Favorites from localStorage
     if (localStorage.getItem('nasaFavorites')) {
         favorites = JSON.parse(localStorage.getItem('nasaFavorites'))
-        console.log(favorites);
+        console.log(favorites, 'from local storage');
     }
     // Reset DOM, Create DOM Nodes, Show Content
     imagesContainer.textContent = '';
@@ -98,7 +98,7 @@ function updateDOM(page) {
 // Get 10 images from NASA API
 async function getNasaPictures() {
   // Show Loader
-  loader.classList.remove('hidden');
+  // loader.classList.remove('hidden');
     try {
       const response = await fetch(apiUrl);
       resultsArray = await response.json();
